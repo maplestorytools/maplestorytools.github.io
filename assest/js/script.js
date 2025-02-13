@@ -289,4 +289,19 @@ $(document).ready(function () {
 			$("#tr_coupon").show()
 		}
 	})
+
+	// 監聽燃燒類型的變化
+	$("#burning_max_type").change(function () {
+		const burningType = $(this).val()
+		if (burningType === "0") {
+			$("#burning-level").hide()
+		} else {
+			$("#burning-level").show()
+		}
+	})
+
+	// 初始化時也要檢查
+	if ($("#burning_max_type").val() === "0") {
+		$("#burning-level").hide()
+	}
 })
