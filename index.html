@@ -8,7 +8,8 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="assest/js/expData.js"></script>
     <script src="assest/js/script.js"></script>
-
+    <link rel="icon" type="image/png" href="assest/images/maple.png">
+    <title>新楓之谷經驗券計算器 MapleStory EXP Calculator </title>
 </head>
 
 <body>
@@ -49,23 +50,13 @@
                                         <th>燃燒</th>
                                         <td class="burning-options">
                                             <div class="burning-controls">
-                                                <div class="form-check form-switch">
-                                                    <input id="hyper" name="hyper" class="form-check-input chk_burning"
-                                                        type="checkbox" value="1" role="switch" data-bs-toggle="tooltip"
-                                                        data-bs-html="true" data-bs-custom-class="custom-tooltip"
-                                                        data-bs-title="<span class='custom_tooltip'>若為指定超級燃燒MAX角色請勾選</span>">
-                                                </div>
-                                                <div id="burning-add-level" class="form-check" style="display: none;">
-                                                    <input name="burning_type" class="burning-add-level-input"
-                                                        type="radio" value="1_2" id="burning_1_2" checked="checked">
-                                                    <label class="form-check-label" for="burning_1_2">
-                                                        1+2
-                                                    </label>
-                                                    <input name="burning_type" class="burning-add-level-input"
-                                                        type="radio" value="1_4" id="burning_1_4">
-                                                    <label class="form-check-label" for="burning_1_4">
-                                                        1+4
-                                                    </label>
+                                                <input type="range" id="burning_max_type"
+                                                    class="form-range fire_max_range" min="0" max="2" value="0"
+                                                    step="1">
+                                                <div class="labels">
+                                                    <span>None</span>
+                                                    <span>1+2</span>
+                                                    <span>1+4</span>
                                                 </div>
                                             </div>
                                             <div id="burning-level" class="burning-level input-group mt-2"
@@ -129,13 +120,13 @@
                                     <tr id="tr_level">
                                         <th>目標等級<span class="text-danger">*</span></th>
                                         <td><input name="target_level" type="number" class="form-control"
-                                                placeholder="0" min="201" max="300" value="201">
+                                                placeholder="0" min="201" max="300" value="203">
                                         </td>
                                     </tr>
                                     <tr id="tr_coupon" style="display: none;">
                                         <th>優惠券數量<span class="text-danger">*</span></th>
                                         <td><input name="coupon_count" type="number" class="form-control"
-                                                placeholder="0">
+                                                placeholder="0" value="299">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -157,8 +148,9 @@
                                     </tr>
                                     <tr>
                                         <th>獲得經驗值</th>
-                                        <td><b id="gain_exp" class="text_cyan">0</b><br>(<span id="gain_exp_per"
-                                                class="text_purple">0</span>%)</td>
+                                        <td><b id="gain_exp" class="text_cyan">0</b></td>
+                                        <!-- <td><b id="gain_exp" class="text_cyan">0</b><br>(<span id="gain_exp_per"
+                                                class="text_purple" style="display: none;">0</span>%)</td> -->
                                     </tr>
                                     <tr>
                                         <th>達成等級</th>
@@ -175,8 +167,10 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="p-2 mt-5">
-                                <table class="w-100" id="result_elixir">
+                            <div class="p-1 mt-3">
+                                <div class="inner_title link_exp_table" onclick="window.location.href='pages/exp.html'">
+                                    等級成長所需經驗表</div>
+                                <table class="w-100" id="result_elixir" style="display: none;">
                                     <tbody>
                                         <tr>
                                             <th colspan="2">成長藥水效率計算結果</th>
