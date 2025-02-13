@@ -1,1 +1,1 @@
-[https://maplestoryexpandpotion.github.io/](https://maplestoryexpandpotion.github.io/)
+[maplestorytools.github.io](https://maplestorytools.github.io/)
